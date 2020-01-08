@@ -118,7 +118,7 @@ class PostWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Text(
-        '$post.id', 
+        '${post.id}',
         style: TextStyle(fontSize: 10.0),),
       title: Text('${post.title}}'),
       isThreeLine: true,

@@ -59,13 +59,22 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     print(response.request.url.toString());
     if (response.statusCode == 200) {
       final data = json.decode(response.body) as List;
-      return data.map((rawPost) {
-        print(rawPost["id"]);
-        return Post(
-          id: rawPost["id"],
-          title: rawPost["title"],
-          body: rawPost["body"]);
+      List<Post> listPosts = [];
+      data.forEach((rawPost) {
+        var smt = Post(
+            id: rawPost["id"],
+            title: rawPost["title"],
+            body: rawPost["body"]);
+        listPosts.add(smt);
       });
+      return listPosts;
+//      return data.map((rawPost) {
+//        print(rawPost["id"]);
+//        return Post(
+//          id: rawPost["id"],
+//          title: rawPost["title"],
+//          body: rawPost["body"]);
+//      });
     } else {
       throw Exception('error fetching error');
     }
