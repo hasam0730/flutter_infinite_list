@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _postBloc = BlocProvider.of<PostBloc>(context);
     _scrollController.addListener(_onScroll);
   }
 
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           } else {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                return PostWidget(post: state.posts[index]);
+                return index < state.posts.length ? PostWidget(post: state.posts[index]) : BottomLoader();
               },
               itemCount: state.hasReachedMax ? state.posts.length : state.posts.length + 1,
               controller: _scrollController,
@@ -67,11 +68,11 @@ class _HomePageState extends State<HomePage> {
 
 
 
-//  @override
-//  void dispose() {
-//    _scrollController.dispose();
-//    super.dispose();
-//  }
+ @override
+ void dispose() {
+   _scrollController.dispose();
+   super.dispose();
+ }
 
 
 

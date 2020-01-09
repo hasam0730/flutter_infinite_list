@@ -39,11 +39,11 @@ class PostLoaded extends PostState {
 
 
   PostLoaded copyWith({
-    List<Object> props, 
+    List<Object> posts, 
     bool hasReachMax}) {
 
     return PostLoaded(
-      posts: props ?? this.posts, 
+      posts: posts ?? this.posts, 
       hasReachedMax: hasReachedMax ?? this.hasReachedMax
     );
   }

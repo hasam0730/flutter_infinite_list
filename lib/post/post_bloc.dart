@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_infinite_list/bloc/bloc.dart';
@@ -68,13 +67,6 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         listPosts.add(smt);
       });
       return listPosts;
-//      return data.map((rawPost) {
-//        print(rawPost["id"]);
-//        return Post(
-//          id: rawPost["id"],
-//          title: rawPost["title"],
-//          body: rawPost["body"]);
-//      });
     } else {
       throw Exception('error fetching error');
     }
